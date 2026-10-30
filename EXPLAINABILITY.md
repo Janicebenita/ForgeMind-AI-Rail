@@ -102,6 +102,6 @@ The objective is not simply to tell an engineer what the AI recommends. The obje
 
 ## Implementation in This Repository
 
-The backend application and its agent modules implement the evidence-retrieval and rail-maintenance reasoning flow described above. The API entry point coordinates requests, the specialist agents assemble supporting maintenance evidence and citations, and the repository tests exercise the implemented behavior and safety boundaries.
+`backend/app/main.py` creates the FastAPI service and mounts the rail asset, search, agent, report, authentication, and demonstration routes. `backend/app/agents/orchestrator.py` instantiates seven concrete specialists—document intelligence, knowledge graph, maintenance intelligence, compliance, root-cause analysis, lessons learned, and executive insights—and `run_agents(context)` executes them over the same authorized rail evidence context.
 
-The returned intelligence is advisory: the code does not authorize maintenance work or control rail equipment. Evidence identifiers and uncertainty are retained so an engineer can inspect the basis of each proposal before any operational action.
+The `backend/app/rag`, service, security, and document-access modules implement evidence retrieval, source authorization, citations, and structured reports; the repository tests exercise those boundaries. The returned intelligence is advisory: the code does not authorize maintenance work or control rail equipment, and engineers can inspect evidence identifiers before acting.
