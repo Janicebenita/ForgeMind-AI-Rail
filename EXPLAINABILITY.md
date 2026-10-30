@@ -99,3 +99,9 @@ Its explainability model can be summarized as:
 The objective is not simply to tell an engineer what the AI recommends. The objective is to make it possible to understand what evidence was used, why a concern was surfaced, what limitations apply, and where human judgment remains required.
 
 **Models explain. Evidence supports. Backend gates. Humans authorize.**
+
+## Implementation in This Repository
+
+The backend application and its agent modules implement the evidence-retrieval and rail-maintenance reasoning flow described above. The API entry point coordinates requests, the specialist agents assemble supporting maintenance evidence and citations, and the repository tests exercise the implemented behavior and safety boundaries.
+
+The returned intelligence is advisory: the code does not authorize maintenance work or control rail equipment. Evidence identifiers and uncertainty are retained so an engineer can inspect the basis of each proposal before any operational action.
